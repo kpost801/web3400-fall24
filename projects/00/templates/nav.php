@@ -7,12 +7,12 @@
         aria-label="main navigation"
       >
         <div class="navbar-brand">
-          <a class="navbar-item" href="#">
+          <a class="navbar-item" href="index.php">
             <span class="icon-text">
               <span class="icon">
                 <i class="fas fa-yin-yang"></i>
               </span>
-              <span>&nbsp;Balance</span>
+              <span>&nbsp;<?= $siteName ?></span>
             </span>
           </a>
           <a
@@ -34,7 +34,7 @@
           <div class="navbar-end">
             <div class="navbar-item">
               <div class="buttons">
-                <a class="button is-light">
+                <a href="contact.php" class="button is-light">
                   <strong>Contact us</strong>
                 </a>
                 <a class="button is-link"> Log in </a>
@@ -56,5 +56,14 @@
         </div>
       </section>
       <!-- END HERO -->
+       <!-- Start User Message -->
+       <?php if (!empty($_SESSION['messages'])) : ?>
+  <section class="notification is-warning">
+      <button class="delete"></button>
+      <?php echo implode('<br>', $_SESSION['messages']);
+            $_SESSION['messages'] = []; // Clear the user responses?>
+  </section>
+<?php endif; ?>
+        <!-- end user message -->
     </header>
     <!-- END PAGE HEADER -->

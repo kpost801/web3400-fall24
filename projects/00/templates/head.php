@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,7 +13,7 @@
       defer
       src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
     ></script>
-    <title>My Webpage with Bulma</title>
+    <title><?= $siteName ?></title>
   </head>
 
   
