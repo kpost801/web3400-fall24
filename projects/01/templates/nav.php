@@ -12,7 +12,7 @@
               <span class="icon">
                 <i class="fas fa-yin-yang"></i>
               </span>
-              <span>&nbsp;<?= $siteName ?></span>
+              <span>&nbsp; My PhP Site</span>
             </span>
           </a>
           <a
@@ -37,7 +37,24 @@
                 <a href="contact.php" class="button is-light">
                   <strong>Contact us</strong>
                 </a>
-                <a class="button is-link"> Log in </a>
+                <!-- BEGIN USER MENU -->
+   <?php if (isset($_SESSION['loggedin'])) : ?>
+      <div class="navbar-item has-dropdown is-hoverable">
+         <a class="button navbar-link">
+            <span class="icon">
+               <i class="fas fa-user"></i>
+            </span>
+         </a>
+         <div class="navbar-dropdown">
+            <a href="profile.php" class="navbar-item">Profile</a>
+            <hr class="navbar-divider">
+            <a href="logout.php" class="navbar-item">Logout</a>
+         </div>
+      </div>
+   <?php else : ?>
+      <a href="login.php" class="button is-link">Login</a>
+   <?php endif; ?>
+<!-- END USER MENU -->
               </div>
             </div>
           </div>
@@ -48,14 +65,20 @@
         &nbsp;
         <!-- this adds a little extra space between the nav and the hero -->
       </section>
-      <!-- BEGIN HERO -->
-      <section class="hero is-info">
-        <div class="hero-body">
-          <p class="title">Hero title</p>
-          <p class="subtitle">Hero subtitle</p>
-        </div>
-      </section>
-      <!-- END HERO -->
+      <?php if ($_SERVER['PHP_SELF'] == '/index.php') : ?>
+  <!-- BEGIN HERO -->
+  <section class="hero is-link">
+      <div class="hero-body">
+          <p class="title">
+              Hero title
+          </p>
+          <p class="subtitle">
+              Hero subtitle
+          </p>
+      </div>
+  </section>
+  <!-- END HERO -->
+<?php endif; ?>
        <!-- Start User Message -->
        <?php if (!empty($_SESSION['messages'])) : ?>
   <section class="notification is-warning">
